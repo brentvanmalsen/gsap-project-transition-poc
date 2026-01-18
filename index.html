@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP Project Intro to Page Transition POC</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="stage" id="stage">
+      <!-- Intro view -->
+      <section class="intro" id="intro" aria-label="Project intro">
+        <header class="topbar">
+          <div class="brandmark" aria-hidden="true">◻︎</div>
+          <button class="menuBtn" type="button" aria-label="Menu">
+            <span></span><span></span>
+          </button>
+        </header>
+
+        <div class="introGrid">
+          <div class="introType">
+            <h1 class="headline">
+              MARTIN GARRIX<br />
+              FT. JEX JORDYN<br />
+              TOLD YOU SO
+            </h1>
+            <div class="introMeta">
+              <p class="small">
+                A cinematic project transition proof of concept for STMPD style storytelling.
+              </p>
+              <div class="actions">
+                <a class="link" href="#" aria-label="View work (demo link)">VIEW WORK <span>→</span></a>
+                <a class="link muted" href="#" aria-label="View all work (demo link)"
+                  >VIEW ALL WORK <span>→</span></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Click target -->
+          <button class="albumCard" id="albumCard" type="button" aria-label="Open project page">
+            <img
+              id="albumImg"
+              class="albumImg"
+              src="images/album_cover.jpg"
+              alt="Album cover"
+              draggable="false"
+            />
+            <div class="albumHint" aria-hidden="true">Click to open</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Dark right panel that appears in the detail state -->
+      <div class="rightPanel" id="rightPanel" aria-hidden="true"></div>
+
+      <!-- Detail view -->
+      <section class="detail" id="detail" aria-label="Project detail" aria-hidden="true">
+        <header class="topbar topbarDetail">
+          <div class="brandmark" aria-hidden="true">◻︎</div>
+          <button class="closeBtn" id="closeBtn" type="button" aria-label="Close project">
+            Close
+          </button>
+        </header>
+
+        <div class="detailInner">
+          <div class="detailLeft">
+            <p class="kicker">RECORDED</p>
+            <p class="kicker">IN STMPD STUDIOS</p>
+            <p class="kicker muted">DOLBY ATMOS</p>
+
+            <div class="scrollHint" aria-hidden="true">
+              <span>scroll down</span>
+              <span class="muted">for the journey</span>
+              <span class="arrow">▼</span>
+            </div>
+          </div>
+
+          <div class="detailRight">
+            <h2 class="detailTitle">TOLD YOU SO</h2>
+            <p class="detailCopy">
+              Bridging festival energy with personal listening, without losing intimacy. This section
+              fades in after the hero transition finishes, to keep the focus on the visual shift first.
+            </p>
+
+            <div class="detailBlocks">
+              <div class="block">
+                <h3>Our Role</h3>
+                <p>
+                  Creative partner support, engineering, and delivery. This is placeholder copy for the POC.
+                </p>
+              </div>
+              <div class="block">
+                <h3>The Result</h3>
+                <p>
+                  A clear narrative structure: image transition first, then the story content reveals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transition layer: we place the moving hero here -->
+      <div class="transitionLayer" id="transitionLayer" aria-hidden="true"></div>
+    </main>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

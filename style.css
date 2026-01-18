@@ -1,0 +1,370 @@
+@font-face {
+  font-family: "Maharlika";
+  src: url("fonts/Maharlika-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --bg: #0f0f10;
+  --panel: #141416;
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.58);
+  --hair: rgba(255, 255, 255, 0.12);
+
+  /* Target width for the left hero in the detail state */
+  --heroW: 62vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.stage {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Shared topbar */
+.topbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.topbar > * {
+  pointer-events: auto;
+}
+
+.brandmark {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.menuBtn {
+  width: 46px;
+  height: 40px;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.menuBtn span {
+  width: 18px;
+  height: 1px;
+  background: var(--text);
+  display: block;
+  opacity: 0.8;
+}
+
+/* Intro */
+.intro {
+  min-height: 100vh;
+  position: relative;
+  padding: 120px 28px 40px 28px;
+  background: radial-gradient(1200px 600px at 40% 20%, rgba(255, 255, 255, 0.08), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 40%);
+}
+
+.introGrid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.introType {
+  position: relative;
+}
+
+.headline {
+  font-family: "Maharlika", serif;
+  letter-spacing: 0.02em;
+  font-size: clamp(44px, 5.4vw, 78px);
+  line-height: 0.95;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.introMeta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 22px;
+  border-top: 1px solid var(--hair);
+  padding-top: 16px;
+}
+
+.small {
+  max-width: 420px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: grid;
+  gap: 8px;
+  text-align: right;
+}
+
+.link {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+.link.muted {
+  color: var(--muted);
+}
+
+/* Album card */
+.albumCard {
+  position: relative;
+  width: min(380px, 100%);
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--hair);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  justify-self: end;
+}
+
+.albumImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+}
+
+.albumHint {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+/* Right panel used in detail state */
+.rightPanel {
+  position: fixed;
+  top: 0;
+  left: var(--heroW);
+  width: calc(100vw - var(--heroW));
+  height: 100vh;
+  background: var(--panel);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 48;
+}
+
+/* Detail */
+.detail {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 49;
+}
+
+.topbarDetail {
+  position: fixed;
+}
+
+.closeBtn {
+  border: 1px solid var(--hair);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.detailInner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  padding: 120px 28px 60px 28px;
+  display: grid;
+  grid-template-columns: var(--heroW) 1fr;
+  gap: 26px;
+}
+
+.detailLeft {
+  position: relative;
+  align-self: end;
+  padding-bottom: 20px;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+.kicker.muted {
+  color: var(--muted);
+}
+
+.scrollHint {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.scrollHint .arrow {
+  display: inline-block;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+.detailRight {
+  align-self: center;
+  max-width: 520px;
+}
+
+.detailTitle {
+  font-family: "Maharlika", serif;
+  margin: 0 0 10px 0;
+  font-size: clamp(36px, 4.4vw, 64px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.detailCopy {
+  margin: 0 0 18px 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.detailBlocks {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.block {
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.block h3 {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.block p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+/* Transition layer and moving hero */
+.transitionLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.movingHero {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 18px;
+  overflow: hidden;
+  will-change: transform, width, height, left, top, border-radius;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 900px) {
+  :root {
+    --heroW: 100vw;
+  }
+
+  .introGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .albumCard {
+    justify-self: start;
+    width: min(360px, 100%);
+  }
+
+  .introMeta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions {
+    text-align: left;
+  }
+
+  .rightPanel {
+    display: none;
+  }
+
+  .detailInner {
+    grid-template-columns: 1fr;
+  }
+
+  .detailRight {
+    max-width: 640px;
+  }
+}
