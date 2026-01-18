@@ -48,14 +48,13 @@ No build tools, frameworks or bundlers are used.
 
 ## Interaction flow
 
-1. Page loads in the Project Intro state
-2. User clicks the project image
-3. GSAP timeline starts
-4. Image moves left, then expands into a left-aligned hero
-5. Right-side panel appears
-6. Supporting content fades in
-7. Text appears in a timed sequence
-8. End state: Project detail visible
+1. User clicks the project image
+2. GSAP timeline starts
+3. Image moves left, then expands into a left-aligned hero
+4. Right-side panel appears
+5. Supporting content fades in
+6. Text appears in a timed sequence
+7. End state: Project detail visible
 
 ## Why this POC exists
 
